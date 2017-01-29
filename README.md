@@ -35,6 +35,18 @@ This document can be accessed in `Assets/WebGLSpeechSynthesis/Readme.pdf` or use
 
 3 (Optional) You may need a voices dropdown in your UI, use the menuitem `GameObject->WebGLSpeechSynthesis->Create Voices Dropdown` [image_4](images/image_4.png)
 
+4 At this point you should have a scene with the `WebGLSpeechSynthesisPlugin`, and (optionally) a voices dropdown added to the canvas.
+
+![image_5](images/image_5.png)
+
+5 Create a custom MonoBehaviour script to use the `WebGLSpeechSynthesisPlugin` API
+
+6 Add a using statement to get access to the `WebGLSpeechSynthesis` namespace
+
+```
+using UnityWebGLSpeechSynthesis;
+```
+
 # Scenes
 
 ## Example01 - Speech Synthesis
