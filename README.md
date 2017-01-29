@@ -27,6 +27,14 @@ Check the [browser compatibility](https://developer.mozilla.org/en-US/docs/Web/A
 
 This document can be accessed in `Assets/WebGLSpeechSynthesis/Readme.pdf` or use the menuitem `GameObject->WebGLSpeechSynthesis->Online Documentation`
 
+# Quick Start
+
+1 Switch to the `WebGL` platform in `Build Settings [image_1](images/image_2.png)
+
+2 Create one `WebGLSpeechSynthesisPlugin` GameObject in the scene with the menu `GameObject->WebGLSpeechSynthesis->Create WebGLSpeechSynthesisPlugion` [image_3](images/image_2.png)
+
+3 (Optional) You may need a voices dropdown in your UI, use the menuitem `GameObject->WebGLSpeechSynthesis->Create Voices Dropdown` [image_4](images/image_4.png)
+
 # Scenes
 
 ## Example01 - Speech Synthesis
@@ -34,3 +42,7 @@ This document can be accessed in `Assets/WebGLSpeechSynthesis/Readme.pdf` or use
 The scene is located at `Assets/WebGLSpeechSynthesis/Scenes/Example01_Synthesis.unity`
 
 ![image_1](images/image_1.png)
+
+# Support
+
+Send questions and/or feedback to the support@theylovegames.com email.
