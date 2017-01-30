@@ -39,12 +39,184 @@ This document can be accessed in `Assets/WebGLSpeechSynthesis/Readme.pdf` or use
 
 ![image_5](images/image_5.png)
 
-5 Create a custom MonoBehaviour script to use the `WebGLSpeechSynthesisPlugin` API
+5 Create a custom MonoBehaviour script to use the `WebGLSpeechSynthesis` API
 
 6 Add a using statement to get access to the `WebGLSpeechSynthesis` namespace
 
 ```
 using UnityWebGLSpeechSynthesis;
+```
+
+## Speech Synthesis Plugin Quick Setup
+
+7 Add a meta reference for `WebGLSpeechSynthesisPlugin` to the script
+
+```
+        /// <summary>
+        /// Reference to the plugin
+        /// </summary>
+        public WebGLSpeechSynthesisPlugin _mWebGLSpeechSynthesisPlugin = null;
+```
+
+8 In the `start event` check if the plugin is available.
+
+```
+        // Use this for initialization
+        void Start()
+        {
+            // will indicate if the plugin is available
+            _mIsAvailable = false;
+
+            // check the meta reference to the plugin
+            if (_mWebGLSpeechSynthesisPlugin)
+            {
+                // check if the plugin is available
+                _mIsAvailable = _mWebGLSpeechSynthesisPlugin.IsAvailable();
+            }
+
+            // if not available, return
+            if (!_mIsAvailable)
+            {
+                // show a warning
+                return;
+            }
+        }
+```
+
+## Voice Selection Quick Setup
+
+9 Add a field to hold the available voices
+
+```
+        /// <summary>
+        /// Reference to the supported voices
+        /// </summary>
+        private WebGLSpeechSynthesisPlugin.VoiceResult _mVoiceResult = null;
+```
+
+10 Start a coroutine to get the available voices
+
+```
+        void Start()
+        {
+            ...
+
+            if (!_mIsAvailable)
+            {
+                return;
+            }
+
+            // Get voices from plugin
+            StartCoroutine(GetVoices());
+        }
+```
+
+11 In the coroutine, use the plugin to get the voices
+
+```
+        private IEnumerator GetVoices()
+        {
+            if (!_mIsAvailable)
+            {
+                yield break;
+            }
+            _mVoiceResult = null;
+            while (null == _mVoiceResult)
+            {
+                yield return new WaitForSeconds(0.25f);
+                _mVoiceResult = _mWebGLSpeechSynthesisPlugin.GetVoices();
+            }
+        }
+```
+
+12 Populate the voices dropdown using the voice result
+
+```
+            // prepare the voices drop down items
+            Utils.PopulateVoicesDropdown(_mDropDownVoices, _mVoiceResult);
+```
+
+13 Handle voice change events from the dropdown
+
+```
+            // drop down reference must be set
+            if (_mDropdownVoices)
+            {
+                // set up the drop down change listener
+                _mDropdownVoices.onValueChanged.AddListener(delegate {
+                    // handle the voice change event, and set the voice on the utterance
+                    Utils.HandleVoiceChanged(_mDropdownVoices,
+                        _mVoiceResult,
+                        _mSpeechSynthesisUtterance);
+                    // Speak in the new voice
+                    Speak();
+                });
+            }
+```
+
+## Speak Quick Setup
+
+14 Add a field to hold the utterance that will be spoken
+
+```
+        /// <summary>
+        /// Reference to the utterance which holds the voice and text to speak
+        /// </summary>
+        private WebGLSpeechSynthesisPlugin.SpeechSynthesisUtterance _mSpeechSynthesisUtterance = null;
+```
+
+15 Create an instance of `SpeechSynthesisUtterance`
+
+```
+        void Start()
+        {
+            ...
+
+            if (!_mIsAvailable)
+            {
+                return;
+            }
+
+            ...
+
+            // Create an instance of SpeechSynthesisUtterance
+            _mSpeechSynthesisUtterance = _mWebGLSpeechSynthesisPlugin.CreateSpeechSynthesisUtterance();
+        }
+```
+
+16 Speak the utterance
+
+```
+        /// <summary>
+        /// Speak the utterance
+        /// </summary>
+        private void Speak()
+        {
+            if (null == _mWebGLSpeechSynthesisPlugin)
+            {
+                Debug.LogError("Plugin is not set!");
+                return;
+            }
+            if (null == _mInputField)
+            {
+                Debug.LogError("InputField is not set!");
+                return;
+            }
+            if (null == _mSpeechSynthesisUtterance)
+            {
+                Debug.LogError("Utterance is not set!");
+                return;
+            }
+
+            // Cancel if already speaking
+            _mWebGLSpeechSynthesisPlugin.Cancel();
+
+            // Set the text that will be spoken
+            _mSpeechSynthesisUtterance.SetText(_mInputField.text);
+
+            // Use the plugin to speak the utterance
+            _mWebGLSpeechSynthesisPlugin.Speak(_mSpeechSynthesisUtterance);
+        }
 ```
 
 # Scenes
