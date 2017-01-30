@@ -83,80 +83,9 @@ using UnityWebGLSpeechSynthesis;
         }
 ```
 
-## Voice Selection Quick Setup
-
-9 Add a field to hold the available voices
-
-```
-        /// <summary>
-        /// Reference to the supported voices
-        /// </summary>
-        private WebGLSpeechSynthesisPlugin.VoiceResult _mVoiceResult = null;
-```
-
-10 Start a coroutine to get the available voices
-
-```
-        void Start()
-        {
-            ...
-
-            if (!_mIsAvailable)
-            {
-                return;
-            }
-
-            // Get voices from plugin
-            StartCoroutine(GetVoices());
-        }
-```
-
-11 In the coroutine, use the plugin to get the voices
-
-```
-        private IEnumerator GetVoices()
-        {
-            if (!_mIsAvailable)
-            {
-                yield break;
-            }
-            _mVoiceResult = null;
-            while (null == _mVoiceResult)
-            {
-                yield return new WaitForSeconds(0.25f);
-                _mVoiceResult = _mWebGLSpeechSynthesisPlugin.GetVoices();
-            }
-        }
-```
-
-12 Populate the voices dropdown using the voice result
-
-```
-            // prepare the voices drop down items
-            Utils.PopulateVoicesDropdown(_mDropDownVoices, _mVoiceResult);
-```
-
-13 Handle voice change events from the dropdown
-
-```
-            // drop down reference must be set
-            if (_mDropdownVoices)
-            {
-                // set up the drop down change listener
-                _mDropdownVoices.onValueChanged.AddListener(delegate {
-                    // handle the voice change event, and set the voice on the utterance
-                    Utils.HandleVoiceChanged(_mDropdownVoices,
-                        _mVoiceResult,
-                        _mSpeechSynthesisUtterance);
-                    // Speak in the new voice
-                    Speak();
-                });
-            }
-```
-
 ## Speak Quick Setup
 
-14 Add a field to hold the utterance that will be spoken
+9 Add a field to hold the utterance that will be spoken
 
 ```
         /// <summary>
@@ -165,7 +94,7 @@ using UnityWebGLSpeechSynthesis;
         private WebGLSpeechSynthesisPlugin.SpeechSynthesisUtterance _mSpeechSynthesisUtterance = null;
 ```
 
-15 Create an instance of `SpeechSynthesisUtterance`
+10 Create an instance of `SpeechSynthesisUtterance`
 
 ```
         void Start()
@@ -184,7 +113,7 @@ using UnityWebGLSpeechSynthesis;
         }
 ```
 
-16 Speak the utterance
+11 Speak the utterance
 
 ```
         /// <summary>
@@ -217,6 +146,77 @@ using UnityWebGLSpeechSynthesis;
             // Use the plugin to speak the utterance
             _mWebGLSpeechSynthesisPlugin.Speak(_mSpeechSynthesisUtterance);
         }
+```
+
+## Voice Selection Quick Setup
+
+12 Add a field to hold the available voices
+
+```
+        /// <summary>
+        /// Reference to the supported voices
+        /// </summary>
+        private WebGLSpeechSynthesisPlugin.VoiceResult _mVoiceResult = null;
+```
+
+13 Start a coroutine to get the available voices
+
+```
+        void Start()
+        {
+            ...
+
+            if (!_mIsAvailable)
+            {
+                return;
+            }
+
+            // Get voices from plugin
+            StartCoroutine(GetVoices());
+        }
+```
+
+14 In the coroutine, use the plugin to get the voices
+
+```
+        private IEnumerator GetVoices()
+        {
+            if (!_mIsAvailable)
+            {
+                yield break;
+            }
+            _mVoiceResult = null;
+            while (null == _mVoiceResult)
+            {
+                yield return new WaitForSeconds(0.25f);
+                _mVoiceResult = _mWebGLSpeechSynthesisPlugin.GetVoices();
+            }
+        }
+```
+
+15 Populate the voices dropdown using the voice result
+
+```
+            // prepare the voices drop down items
+            Utils.PopulateVoicesDropdown(_mDropDownVoices, _mVoiceResult);
+```
+
+16 Handle voice change events from the dropdown
+
+```
+            // drop down reference must be set
+            if (_mDropdownVoices)
+            {
+                // set up the drop down change listener
+                _mDropdownVoices.onValueChanged.AddListener(delegate {
+                    // handle the voice change event, and set the voice on the utterance
+                    Utils.HandleVoiceChanged(_mDropdownVoices,
+                        _mVoiceResult,
+                        _mSpeechSynthesisUtterance);
+                    // Speak in the new voice
+                    Speak();
+                });
+            }
 ```
 
 # Scenes
