@@ -8,7 +8,7 @@ This package is **only** intended for the `WebGL` platform and requires a browse
 Speech Synthesis requires an Internet connection.
 Check the [browser compatibility](https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API#Browser_compatibility) to see which browsers implemented the `Speech API`.
 
-## Supported Browsers
+## Tested Browsers
 
 * Chrome
 * Edge
