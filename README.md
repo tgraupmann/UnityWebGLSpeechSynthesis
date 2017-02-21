@@ -1,5 +1,5 @@
 # UnityWebGLSpeechSynthesis
-Unity WebGL Package For Speech Synthesis
+The WebGL For Speech Synthesis package is available in the [Unity Asset Store](https://www.assetstore.unity3d.com/en/#!/content/81861).
 
 # Target
 
