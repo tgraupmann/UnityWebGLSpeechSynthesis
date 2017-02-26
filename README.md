@@ -1,11 +1,24 @@
 # UnityWebGLSpeechSynthesis
 The WebGL For Speech Synthesis package is available in the [Unity Asset Store](https://www.assetstore.unity3d.com/en/#!/content/81861).
 
+#See Also
+
+The WebGL For Speech Detection package is available in the [Unity Asset Store](https://www.assetstore.unity3d.com/en/#!/content/81076).
+
+# Supported Platforms
+
+* WebGL
+
+* Windows Standalone (using [Speech Proxy](https://github.com/tgraupmann/ChromeSpeechProxy))
+
+* Windows Unity Editor (using [Speech Proxy](https://github.com/tgraupmann/ChromeSpeechProxy))
+
 # Target
 
 The `Unity WebGL Speech Synthesis Package` is created for Unity version `5.5` or better.
-This package is **only** intended for the `WebGL` platform and requires a browser with the built-in [Web Speech API](https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html), like Chrome.
-Speech Synthesis requires an Internet connection.
+This package was originally created for the `WebGL` platform and supports other platforms using a [Speech Proxy](https://github.com/tgraupmann/ChromeSpeechProxy).
+This package requires a browser with the built-in [Web Speech API](https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html), like Chrome.
+Synthesis requires an Internet connection.
 Check the [browser compatibility](https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API#Browser_compatibility) to see which browsers implemented the `Speech API`.
 
 ## Tested Browsers
@@ -19,6 +32,8 @@ Check the [browser compatibility](https://developer.mozilla.org/en-US/docs/Web/A
 
 1.0 - Initial creation of the project
 
+1.1 - Added support for [Speech Proxy](https://github.com/tgraupmann/ChromeSpeechProxy)
+
 # Demos
 
 [Demo 01 Unity Speech Synthesis](https://theylovegames.com/UnityWebGLSpeechSynthesis_01Synthesis/)
@@ -26,6 +41,42 @@ Check the [browser compatibility](https://developer.mozilla.org/en-US/docs/Web/A
 # Documentation
 
 This document can be accessed in `Assets/WebGLSpeechSynthesis/Readme.pdf` or use the menuitem `GameObject->WebGLSpeechSynthesis->Online Documentation`
+
+# Sample Scenes
+
+1 `Assets/WebGLSpeechSynthesis/Scenes/Example01Synthesis` - Uses WebGLSpeechSynthesisPlugin to do speech synthesis
+
+2 `Assets/WebGLSpeechSynthesis/Scenes/Example02Proxy` - Uses ProxySpeechSynthesisPlugin to do speech commands
+
+# Modes
+
+Synthesis modes use the same API interface other than where the instance comes from.
+
+## WebGL Mode
+
+The `WebGLSpeechSynthesisPlugin` uses native synthesis only for the WebGL platform.
+
+```
+ISpeechSynthesisPlugin speechSynthesisPlugin = WebGLSpeechSynthesisPlugin.GetInstance();
+```
+
+`WebGL` mode requires a `WebGLSpeechSynthesisPlugin` gameobject in the scene which can be created from the `GameObject->WebGLSpeechSynthesis->Create WebGLSpeechSynthesisPlugin` menu item.
+
+## Proxy Mode
+
+The `ProxySpeechSynthesisPlugin` uses a [Speech Proxy](https://github.com/tgraupmann/ChromeSpeechProxy) to do speech synthesis for non-WebGL platforms.
+
+```
+ISpeechSynthesisPlugin speechSynthesisPlugin = ProxySpeechSynthesisPlugin.GetInstance();
+```
+
+`Proxy` mode requires a `ProxySpeechSynthesisPlugin` gameobject in the scene which can be created from the `GameObject->WebGLSpeechSynthesis->Create ProxySpeechSynthesisPlugin` menu item.
+
+Also a [Speech Proxy](https://github.com/tgraupmann/ChromeSpeechProxy) needs to be running for `Proxy` mode to work.
+
+The `Proxy Port` is assigned by the `ProxySpeechSynthesisPlugin` gameobject with the inspector and needs to match the port used by the [Speech Proxy](https://github.com/tgraupmann/ChromeSpeechProxy).
+
+![image_6](images/image_6.png)
 
 # Quick Start
 
