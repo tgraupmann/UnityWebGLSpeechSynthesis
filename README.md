@@ -210,6 +210,46 @@ using UnityWebGLSpeechSynthesis;
                     });
 ```
 
+## Proxy Management
+
+16 Launch the [Speech Proxy](https://github.com/tgraupmann/ChromeSpeechProxy)
+
+```
+            // get the singleton instance
+            _mSpeechSynthesisPlugin = ProxySpeechSynthesisPlugin.GetInstance();
+
+            // check the reference to the plugin
+            if (null != _mSpeechSynthesisPlugin)
+            {
+                // launch the proxy
+                _mSpeechSynthesisPlugin.ManagementLaunchProxy();
+            }
+```
+
+17 Set Proxy Port
+```
+int port = 83;
+_mSpeechSynthesisPlugin.ManagementSetProxyPort(port);
+```
+
+18 Open Browser Tab
+
+```
+_mSpeechSynthesisPlugin.ManagementOpenBrowserTab();
+```
+
+19 Close Browser Tab
+
+```
+_mSpeechSynthesisPlugin.ManagementCloseBrowserTab();
+```
+
+20 Close Proxy
+
+```
+_mSpeechSynthesisPlugin.ManagementCloseProxy();
+```
+
 # Scenes
 
 ## Example01 - Speech Synthesis
