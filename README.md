@@ -48,6 +48,8 @@ This document can be accessed in `Assets/WebGLSpeechSynthesis/Readme.pdf` or use
 
 2 `Assets/WebGLSpeechSynthesis/Scenes/Example02Proxy` - Uses ProxySpeechSynthesisPlugin to do speech synthesis
 
+3 `Assets/WebGLSpeechDetection/Scenes/Example03_ProxyManagement`- Management methods for launching and modifying the proxy
+
 # Modes
 
 Synthesis modes use the same API interface other than where the instance comes from.
@@ -226,6 +228,12 @@ The example code is nearly identical to the non-proxy example, except for gettin
             // get the singleton instance
             _mSpeechSynthesisPlugin = ProxySpeechSynthesisPlugin.GetInstance();
 ```
+
+## Example03 - Proxy Management
+
+The scene is located at `Assets/WebGLSpeechSynthesis/Scenes/Example03_ProxyManagement.unity`
+
+![image_7](images/image_7.png)
 
 # Support
 
