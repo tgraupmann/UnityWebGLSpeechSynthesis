@@ -15,7 +15,7 @@ The WebGL For Speech Detection package is available in the [Unity Asset Store](h
 
 # Target
 
-The `Unity WebGL Speech Synthesis Package` is created for Unity version `5.5` or better.
+The `Unity WebGL Speech Synthesis Package` is created for Unity version `5.3` or better.
 This package was originally created for the `WebGL` platform and supports other platforms using a [Speech Proxy](https://github.com/tgraupmann/ChromeSpeechProxy).
 This package requires a browser with the built-in [Web Speech API](https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html), like Chrome.
 Synthesis requires an Internet connection.
