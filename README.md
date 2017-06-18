@@ -62,7 +62,7 @@ This document can be accessed in `Assets/WebGLSpeechSynthesis/Readme.pdf` or use
 
 4 `Assets/WebGLSpeechSynthesis/Scenes/Example04SbaitsoClone` - Clone of a classic text to speech demo
 
-6 `Assets/WebGLSpeechSynthesis/Editor/Example05PanelSynthesis.cs` - Unity editor panel for speech synthesis that works in play mode and edit mode
+5 `Assets/WebGLSpeechSynthesis/Editor/Example05PanelSynthesis.cs` - Unity editor panel for speech synthesis that works in play mode and edit mode
 
 # Modes
 
