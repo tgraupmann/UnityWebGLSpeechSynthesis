@@ -58,7 +58,11 @@ This document can be accessed in `Assets/WebGLSpeechSynthesis/Readme.pdf` or use
 
 2 `Assets/WebGLSpeechSynthesis/Scenes/Example02Proxy` - Uses ProxySpeechSynthesisPlugin to do speech synthesis
 
-3 `Assets/WebGLSpeechDetection/Scenes/Example03_ProxyManagement`- Management methods for launching and modifying the proxy
+3 `Assets/WebGLSpeechSynthesis/Scenes/Example03ProxyManagement` - Management methods for launching and modifying the proxy
+
+4 `Assets/WebGLSpeechSynthesis/Scenes/Example04SbaitsoClone` - Clone of a classic text to speech demo
+
+6 `Assets/WebGLSpeechSynthesis/Editor/Example05PanelSynthesis.cs` - Unity editor panel for speech synthesis that works in play mode and edit mode
 
 # Modes
 
@@ -264,13 +268,13 @@ _mSpeechSynthesisPlugin.ManagementCloseProxy();
 
 ## Example01 - Speech Synthesis
 
-The scene is located at `Assets/WebGLSpeechSynthesis/Scenes/Example01_Synthesis.unity`
+The scene is located at `Assets/WebGLSpeechSynthesis/Scenes/Example01Synthesis.unity`
 
 ![image_1](images/image_1.png)
 
 ## Example02 - Proxy Synthesis
 
-The scene is located at `Assets/WebGLSpeechSynthesis/Scenes/Example02_Proxy.unity`
+The scene is located at `Assets/WebGLSpeechSynthesis/Scenes/Example02Proxy.unity`
 
 The example code is nearly identical to the non-proxy example, except for getting the synthesis instance from `ProxySpeechSynthesisPlugin`.
 
@@ -281,9 +285,29 @@ The example code is nearly identical to the non-proxy example, except for gettin
 
 ## Example03 - Proxy Management
 
-The scene is located at `Assets/WebGLSpeechSynthesis/Scenes/Example03_ProxyManagement.unity`
+The scene is located at `Assets/WebGLSpeechSynthesis/Scenes/Example03ProxyManagement.unity`.
 
 ![image_7](images/image_7.png)
+
+## Example04 - Sbaitso Clone
+
+The scene is located at `Assets/WebGLSpeechSynthesis/Scenes/Example04SbaitsoClone.unity`.
+
+The example source is located at `Assets/WebGLSpeechSynthesis/Scripts/Example04SbaitsoClone`.
+
+The AI is controlled from `Assets/WebGLSpeechSynthesis/Scripts/AISbaitso.cs` which is a port from `JAVA`.
+
+The example is a clone of the classic `Dr. Sbaitso Demo` that was bundled with `Sound Blaster Pro Audio Cards` which showcased text to speech in the `1990s`.
+
+![image_8](images/image_8.png)
+
+## Example05 - Panel Synthesis
+
+The editor panel script is located at `Assets/WebGLSpeechSynthesis/Editor/Example05PanelSynthesis.cs` and is activated via the `Window->WebGLSpeechSynthesis->Open Example05PanelSynthesis` menu item. 
+
+The example panel shows speech synthesis working in edit and play modes.
+
+The panel example uses the `EditorProxySpeechSynthesisPlugin` to proxy the speech api in `edit` mode.
 
 # Support
 
