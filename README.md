@@ -44,6 +44,8 @@ Check the [browser compatibility](https://developer.mozilla.org/en-US/docs/Web/A
 
 1.4 - Added support for `MacOS` for `play-mode` and `edit-mode`
 
+1.5 - Added example without GUI
+
 # Demos
 
 [Demo 01 Unity Speech Synthesis](https://theylovegames.com/UnityWebGLSpeechSynthesis_01Synthesis/)
@@ -63,6 +65,8 @@ This document can be accessed in `Assets/WebGLSpeechSynthesis/Readme.pdf` or use
 4 `Assets/WebGLSpeechSynthesis/Scenes/Example04SbaitsoClone` - Clone of a classic text to speech demo
 
 5 `Assets/WebGLSpeechSynthesis/Editor/Example05PanelSynthesis.cs` - Unity editor panel for speech synthesis that works in play mode and edit mode
+
+6 `Assets/WebGLSpeechSynthesis/Scenes/Example06NoGUI` - Speech synthesis example without a GUI
 
 # Modes
 
@@ -270,11 +274,15 @@ _mSpeechSynthesisPlugin.ManagementCloseProxy();
 
 The scene is located at `Assets/WebGLSpeechSynthesis/Scenes/Example01Synthesis.unity`
 
+The example source is located at `Assets/WebGLSpeechSynthesis/Scripts/Example01Synthesis.cs`.
+
 ![image_1](images/image_1.png)
 
 ## Example02 - Proxy Synthesis
 
 The scene is located at `Assets/WebGLSpeechSynthesis/Scenes/Example02Proxy.unity`
+
+The example source is located at `Assets/WebGLSpeechSynthesis/Scripts/Example02Proxy.cs`.
 
 The example code is nearly identical to the non-proxy example, except for getting the synthesis instance from `ProxySpeechSynthesisPlugin`.
 
@@ -287,13 +295,15 @@ The example code is nearly identical to the non-proxy example, except for gettin
 
 The scene is located at `Assets/WebGLSpeechSynthesis/Scenes/Example03ProxyManagement.unity`.
 
+The example source is located at `Assets/WebGLSpeechSynthesis/Scripts/Example03ProxyManagement.cs`.
+
 ![image_7](images/image_7.png)
 
 ## Example04 - Sbaitso Clone
 
 The scene is located at `Assets/WebGLSpeechSynthesis/Scenes/Example04SbaitsoClone.unity`.
 
-The example source is located at `Assets/WebGLSpeechSynthesis/Scripts/Example04SbaitsoClone`.
+The example source is located at `Assets/WebGLSpeechSynthesis/Scripts/Example04SbaitsoClone.cs`.
 
 The AI is controlled from `Assets/WebGLSpeechSynthesis/Scripts/AISbaitso.cs` which is a port from `JAVA`.
 
@@ -308,6 +318,12 @@ The editor panel script is located at `Assets/WebGLSpeechSynthesis/Editor/Exampl
 The example panel shows speech synthesis working in edit and play modes.
 
 The panel example uses the `EditorProxySpeechSynthesisPlugin` to proxy the speech api in `edit` mode.
+
+## Example06 - No GUI
+
+The scene is located at `Assets/WebGLSpeechSynthesis/Scenes/Example06NoGUI.unity`
+
+The example source is located at `Assets/WebGLSpeechSynthesis/Scripts/Example06NoGUI.cs`.
 
 # Support
 
