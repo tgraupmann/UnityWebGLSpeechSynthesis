@@ -5,7 +5,8 @@ The WebGL For Speech Synthesis package is available in the [Unity Asset Store](h
 
 The WebGL For Speech Detection package is available in the [Unity Asset Store](https://www.assetstore.unity3d.com/en/#!/content/81076). [Online documentation](https://github.com/tgraupmann/UnityWebGLSpeechDetection) is available.
 
-[UnityWebGLSpeech](https://github.com/tgraupmann/UnityWebGLSpeech) combines both `Speech Detection` and `Speech Synthesis` packages.
+The `WebGL Speech` package is available in the [Unity Asset Store](https://assetstore.unity.com/packages/tools/audio/webgl-speech-105831). 
+[Online documentation](https://github.com/tgraupmann/UnityWebGLSpeech) is available.
 
 # Supported Platforms
 
