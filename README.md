@@ -1,9 +1,12 @@
 # UnityWebGLSpeechSynthesis
-The WebGL For Speech Synthesis package is available in the [Unity Asset Store](https://www.assetstore.unity3d.com/en/#!/content/81861).
+The `WebGL for Speech Synthesis` package is available in the [Unity Asset Store](https://www.assetstore.unity3d.com/en/#!/content/81861). [Online documentation](https://github.com/tgraupmann/UnityWebGLSpeechSynthesis) is available.
 
 # See Also
 
-The WebGL For Speech Detection package is available in the [Unity Asset Store](https://www.assetstore.unity3d.com/en/#!/content/81076).
+The `WebGL for Speech Detection` package is available in the [Unity Asset Store](https://www.assetstore.unity3d.com/en/#!/content/81076). [Online documentation](https://github.com/tgraupmann/UnityWebGLSpeechDetection) is available.
+
+The `WebGL Speech` package is available in the [Unity Asset Store](https://assetstore.unity.com/packages/tools/audio/webgl-speech-105831). 
+[Online documentation](https://github.com/tgraupmann/UnityWebGLSpeech) is available.
 
 # Supported Platforms
 
@@ -19,7 +22,7 @@ The WebGL For Speech Detection package is available in the [Unity Asset Store](h
 
 # Target
 
-The `Unity WebGL Speech Synthesis Package` is created for Unity version `5.3` or better.
+The `WebGL for Speech Synthesis` package is created for Unity version `5.3` or better.
 This package was originally created for the `WebGL` platform and supports other platforms using a `Speech Proxy`.
 This package requires a browser with the built-in [Web Speech API](https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html), like Chrome.
 Synthesis requires an Internet connection.
