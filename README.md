@@ -123,32 +123,32 @@ using UnityWebGLSpeechSynthesis;
 7 Add a reference for `WebGLSpeechSynthesisPlugin` to the script
 
 ```
-        /// <summary>
-        /// Reference to the plugin
-        /// </summary>
-        private ISpeechSynthesisPlugin _mSpeechSynthesisPlugin = null;
+/// <summary>
+/// Reference to the plugin
+/// </summary>
+private ISpeechSynthesisPlugin _mSpeechSynthesisPlugin = null;
 ```
 
 8 In the `start event` check if the plugin is available.
 
 ```
-        // Use this for initialization
-        IEnumerator Start()
-        {
-            // get singleton instance
-            _mSpeechSynthesisPlugin = WebGLSpeechSynthesisPlugin.GetInstance();
-            if (null == _mSpeechSynthesisPlugin)
-            {
-                Debug.LogError("WebGL Speech Synthesis Plugin is not set!");
-                yield break;
-            }
+// Use this for initialization
+IEnumerator Start()
+{
+    // get singleton instance
+    _mSpeechSynthesisPlugin = WebGLSpeechSynthesisPlugin.GetInstance();
+    if (null == _mSpeechSynthesisPlugin)
+    {
+        Debug.LogError("WebGL Speech Synthesis Plugin is not set!");
+        yield break;
+    }
 
-            // wait for proxy to become available
-            while (!_mSpeechSynthesisPlugin.IsAvailable())
-            {
-                yield return null;
-            }
-        }
+    // wait for proxy to become available
+    while (!_mSpeechSynthesisPlugin.IsAvailable())
+    {
+        yield return null;
+    }
+}
 ```
 
 ## Speak Quick Setup
@@ -156,34 +156,34 @@ using UnityWebGLSpeechSynthesis;
 9 Add a field to hold the utterance that will be spoken
 
 ```
-        /// <summary>
-        /// Reference to the utterance which holds the voice and text to speak
-        /// </summary>
-        private SpeechSynthesisUtterance _mSpeechSynthesisUtterance = null;
+/// <summary>
+/// Reference to the utterance which holds the voice and text to speak
+/// </summary>
+private SpeechSynthesisUtterance _mSpeechSynthesisUtterance = null;
 ```
 
 10 Create an instance of `SpeechSynthesisUtterance`
 
 ```
-            // Create an instance of SpeechSynthesisUtterance
-            _mSpeechSynthesisPlugin.CreateSpeechSynthesisUtterance((utterance) =>
-            {
-                //Debug.LogFormat("Utterance created: {0}", utterance._mReference);
-                _mSpeechSynthesisUtterance = utterance;
-            });
+// Create an instance of SpeechSynthesisUtterance
+_mSpeechSynthesisPlugin.CreateSpeechSynthesisUtterance((utterance) =>
+{
+    //Debug.LogFormat("Utterance created: {0}", utterance._mReference);
+    _mSpeechSynthesisUtterance = utterance;
+});
 ```
 
 11 Speak the utterance
 
 ```
-            // Cancel if already speaking
-            _mSpeechSynthesisPlugin.Cancel();
+// Cancel if already speaking
+_mSpeechSynthesisPlugin.Cancel();
 
-            // Set the text that will be spoken
-            _mSpeechSynthesisPlugin.SetText(_mSpeechSynthesisUtterance, _mInputField.text);
+// Set the text that will be spoken
+_mSpeechSynthesisPlugin.SetText(_mSpeechSynthesisUtterance, _mInputField.text);
 
-            // Use the plugin to speak the utterance
-            _mSpeechSynthesisPlugin.Speak(_mSpeechSynthesisUtterance);
+// Use the plugin to speak the utterance
+_mSpeechSynthesisPlugin.Speak(_mSpeechSynthesisUtterance);
 ```
 
 ## Voice Selection Quick Setup
@@ -191,78 +191,99 @@ using UnityWebGLSpeechSynthesis;
 12 Add a field to hold the available voices
 
 ```
-        /// <summary>
-        /// Reference to the supported voices
-        /// </summary>
-        private VoiceResult _mVoiceResult = null;
+/// <summary>
+/// Reference to the supported voices
+/// </summary>
+private VoiceResult _mVoiceResult = null;
 ```
 
 13 Use the plugin to get the available voices
 
 ```
-            _mSpeechSynthesisPlugin.GetVoices((voiceResult) =>
-            {
-                _mVoiceResult = voiceResult;
-            });
+_mSpeechSynthesisPlugin.GetVoices((voiceResult) =>
+{
+    _mVoiceResult = voiceResult;
+});
 ```
 
-14 Populate the voices dropdown using the voice result
+14 Select the desired voice from the voice result
 
 ```
-                // prepare the voices drop down items
-                SpeechSynthesisUtils.PopulateVoicesDropdown(_mDropdownVoices, _mVoiceResult);
+if (null != _mVoiceResult &&
+    null != _mVoiceResult.voices)
+{
+    for (int i = 0; i < _mVoiceResult.voices.Length; ++i)
+    {
+        Voice voice = _mVoiceResult.voices[i];
+        if (null == voice)
+        {
+            continue;
+        }
+        // select voice by display name
+        if (!string.IsNullOrEmpty(voice.display))
+        {
+            options.Add(voice.display);
+        }
+        // select voice by name
+        else if (!string.IsNullOrEmpty(voice.name))
+        {
+            options.Add(voice.name);
+        }
+    }
+}
 ```
 
-15 Handle voice change events from the dropdown
+15 Set the voice on the utterance
 
 ```
-                    // set up the drop down change listener
-                    _mDropdownVoices.onValueChanged.AddListener(delegate {
-                        // handle the voice change event, and set the voice on the utterance
-                        SpeechSynthesisUtils.HandleVoiceChanged(_mDropdownVoices,
-                            _mVoiceResult,
-                            _mSpeechSynthesisUtterance,
-                            _mSpeechSynthesisPlugin);
-                        // Speak in the new voice
-                        Speak();
-                    });
+_mSpeechSynthesisPlugin.SetVoice(_mSpeechSynthesisUtterance, voice);
+```
+
+16 Set text on the utterance and call `Speak`
+
+```
+// Set the text that will be spoken
+_mSpeechSynthesisPlugin.SetText(_mSpeechSynthesisUtterance, text);
+
+// Use the plugin to speak the utterance
+_mSpeechSynthesisPlugin.Speak(_mSpeechSynthesisUtterance);
 ```
 
 ## Proxy Management
 
-16 Launch the `Speech Proxy`
+17 Launch the `Speech Proxy`
 
 ```
-            // get the singleton instance
-            _mSpeechSynthesisPlugin = ProxySpeechSynthesisPlugin.GetInstance();
+// get the singleton instance
+_mSpeechSynthesisPlugin = ProxySpeechSynthesisPlugin.GetInstance();
 
-            // check the reference to the plugin
-            if (null != _mSpeechSynthesisPlugin)
-            {
-                // launch the proxy
-                _mSpeechSynthesisPlugin.ManagementLaunchProxy();
-            }
+// check the reference to the plugin
+if (null != _mSpeechSynthesisPlugin)
+{
+    // launch the proxy
+    _mSpeechSynthesisPlugin.ManagementLaunchProxy();
+}
 ```
 
-17 Set Proxy Port
+18 Set Proxy Port
 ```
 int port = 83;
 _mSpeechSynthesisPlugin.ManagementSetProxyPort(port);
 ```
 
-18 Open Browser Tab
+19 Open Browser Tab
 
 ```
 _mSpeechSynthesisPlugin.ManagementOpenBrowserTab();
 ```
 
-19 Close Browser Tab
+20 Close Browser Tab
 
 ```
 _mSpeechSynthesisPlugin.ManagementCloseBrowserTab();
 ```
 
-20 Close Proxy
+21 Close Proxy
 
 ```
 _mSpeechSynthesisPlugin.ManagementCloseProxy();
@@ -287,8 +308,8 @@ The example source is located at `Assets/WebGLSpeechSynthesis/Scripts/Example02P
 The example code is nearly identical to the non-proxy example, except for getting the synthesis instance from `ProxySpeechSynthesisPlugin`.
 
 ```
-            // get the singleton instance
-            _mSpeechSynthesisPlugin = ProxySpeechSynthesisPlugin.GetInstance();
+// get the singleton instance
+_mSpeechSynthesisPlugin = ProxySpeechSynthesisPlugin.GetInstance();
 ```
 
 ## Example03 - Proxy Management
@@ -313,7 +334,7 @@ The example is a clone of the classic `Dr. Sbaitso Demo` that was bundled with `
 
 ## Example05 - Panel Synthesis
 
-The editor panel script is located at `Assets/WebGLSpeechSynthesis/Editor/Example05PanelSynthesis.cs` and is activated via the `Window->WebGLSpeechSynthesis->Open Example05PanelSynthesis` menu item. 
+The editor panel script is located at `Assets/WebGLSpeechSynthesis/Editor/Example05PanelSynthesis.cs` and is activated via the `Window->WebGLSpeechSynthesis->Open Example05PanelSynthesis` menu item.
 
 The example panel shows speech synthesis working in edit and play modes.
 
