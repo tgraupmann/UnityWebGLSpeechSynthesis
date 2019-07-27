@@ -5,7 +5,7 @@ The `WebGL for Speech Synthesis` package is available in the [Unity Asset Store]
 
 The `WebGL for Speech Detection` package is available in the [Unity Asset Store](https://www.assetstore.unity3d.com/en/#!/content/81076). [Online documentation](https://github.com/tgraupmann/UnityWebGLSpeechDetection) is available.
 
-The `WebGL Speech` package is available in the [Unity Asset Store](https://assetstore.unity.com/packages/tools/audio/webgl-speech-105831). 
+The `WebGL Speech` package is available in the [Unity Asset Store](https://assetstore.unity.com/packages/tools/audio/webgl-speech-105831).
 [Online documentation](https://github.com/tgraupmann/UnityWebGLSpeech) is available.
 
 # Supported Platforms
@@ -49,6 +49,12 @@ Check the [browser compatibility](https://developer.mozilla.org/en-US/docs/Web/A
 
 1.5 - Added example without GUI
 
+1.6 - Added buffering for language data
+
+1.7 - Cleaned up sample code
+
+1.8 - Updated sample scenes to use default 5000 port
+
 # Demos
 
 [Demo 01 Unity Speech Synthesis](https://theylovegames.com/UnityWebGLSpeechSynthesis_01Synthesis/)
@@ -59,17 +65,25 @@ This document can be accessed in `Assets/WebGLSpeechSynthesis/Readme.pdf` or use
 
 # Sample Scenes
 
-1 `Assets/WebGLSpeechSynthesis/Scenes/Example01Synthesis` - Uses WebGLSpeechSynthesisPlugin to do speech synthesis
+***These sample scenes are located in the `Assets/WebGLSpeechSynthesis/` folder:***
 
-2 `Assets/WebGLSpeechSynthesis/Scenes/Example02Proxy` - Uses ProxySpeechSynthesisPlugin to do speech synthesis
+1 `Scenes/Example01Synthesis` - Uses WebGLSpeechSynthesisPlugin to do speech synthesis
 
-3 `Assets/WebGLSpeechSynthesis/Scenes/Example03ProxyManagement` - Management methods for launching and modifying the proxy
+2 `Scenes/Example02Proxy` - Uses ProxySpeechSynthesisPlugin to do speech synthesis
 
-4 `Assets/WebGLSpeechSynthesis/Scenes/Example04SbaitsoClone` - Clone of a classic text to speech demo
+3 `Scenes/Example03ProxyManagement` - Management methods for launching and modifying the proxy
 
-5 `Assets/WebGLSpeechSynthesis/Editor/Example05PanelSynthesis.cs` - Unity editor panel for speech synthesis that works in play mode and edit mode
+4 `Scenes/Example04SbaitsoClone` - Clone of a classic text to speech demo
 
-6 `Assets/WebGLSpeechSynthesis/Scenes/Example06NoGUI` - Speech synthesis example without a GUI
+***These sample scenes are located in the `Assets/WebGLSpeechSynthesis/Editor/` folder:***
+
+5 `Example05PanelSynthesis.cs` - Unity editor panel for speech synthesis that works in play mode and edit mode
+
+***These sample scenes are located in the `Assets/WebGLSpeechSynthesis/` folder:***
+
+6 `Scenes/Example06NoGUI` - Speech synthesis example without a GUI
+
+7 `Scenes/Example07Buttons` - Speech synthesis where buttons uses random voices
 
 # Modes
 
@@ -270,7 +284,7 @@ if (null != _mSpeechSynthesisPlugin)
 
 18 Set Proxy Port
 ```
-int port = 83;
+int port = 5000;
 _mSpeechSynthesisPlugin.ManagementSetProxyPort(port);
 ```
 
@@ -348,6 +362,12 @@ The panel example uses the `EditorProxySpeechSynthesisPlugin` to proxy the speec
 The scene is located at `Assets/WebGLSpeechSynthesis/Scenes/Example06NoGUI.unity`
 
 The example source is located at `Assets/WebGLSpeechSynthesis/Scripts/Example06NoGUI.cs`.
+
+## Example07 - Buttons
+
+The scene is located at `Assets/WebGLSpeechSynthesis/Scenes/Example07Buttons.unity`
+
+The example source is located at `Assets/WebGLSpeechSynthesis/Scripts/Example07Buttons.cs`.
 
 # Support
 
