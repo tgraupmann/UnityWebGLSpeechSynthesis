@@ -55,6 +55,8 @@ Check the [browser compatibility](https://developer.mozilla.org/en-US/docs/Web/A
 
 1.8 - Updated sample scenes to use default 5000 port
 
+1.9 - Added support for 2018.1 and 2019.1.
+
 # Demos
 
 [Demo 01 Unity Speech Synthesis](https://theylovegames.com/UnityWebGLSpeechSynthesis_01Synthesis/)
