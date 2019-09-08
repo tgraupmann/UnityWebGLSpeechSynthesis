@@ -344,7 +344,7 @@ IEnumerator Start()
 }
 ```
 
-23 Define the `SynthesisOnEnd` callback
+23 The `SynthesisOnEnd` callback will fire when Speak() completes
 
 ```
 void HandleSynthesisOnEnd(SpeechSynthesisEvent speechSynthesisEvent)
