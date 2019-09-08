@@ -324,6 +324,34 @@ _mSpeechSynthesisPlugin.ManagementCloseBrowserTab();
 _mSpeechSynthesisPlugin.ManagementCloseProxy();
 ```
 
+## Detect Synthesis On End Events
+
+22 After the plugin is initialized, subscribe to `SynthesisOnEnd` events.
+
+```
+// Use this for initialization
+IEnumerator Start()
+{
+	_mSpeechSynthesisPlugin = SpeechSynthesisUtils.GetInstance();
+	if (null == _mSpeechSynthesisPlugin)
+	{
+		Debug.LogError("Speech Synthesis Plugin is not set!");
+		yield break;
+	}
+
+	// subscribe to events
+	_mSpeechSynthesisPlugin.AddListenerSynthesisOnEnd(HandleSynthesisOnEnd);
+}
+```
+
+23 Define the `SynthesisOnEnd` callback
+
+```
+void HandleSynthesisOnEnd(SpeechSynthesisEvent speechSynthesisEvent)
+{
+}
+```
+
 # Scenes
 
 ## Example01 - Speech Synthesis
