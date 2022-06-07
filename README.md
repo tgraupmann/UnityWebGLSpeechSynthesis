@@ -352,6 +352,63 @@ void HandleSynthesisOnEnd(SpeechSynthesisEvent speechSynthesisEvent)
 }
 ```
 
+## Set A Default Voice
+
+```
+/// <summary>
+/// Speak the utterance
+/// </summary>
+public void Speak(string text)
+{
+    if (null == _mSpeechSynthesisUtterance)
+    {
+        Debug.LogError("Utterance is not set!");
+        return;
+    }
+
+    if (string.IsNullOrEmpty(text))
+    {
+        return;
+    }
+
+    if (!_mVoicesSet)
+    {
+        return;
+    }
+
+    if (!_mUtteranceSet)
+    {
+        return;
+    }
+
+    // set a default voice
+    if (null != _mVoiceResult &&
+        null != _mVoiceResult.voices &&
+        _mVoiceResult.voices.Length > 0)
+    {
+        for (int index = 0; index < _mVoiceResult.voices.Length; ++index)
+        {
+            Voice voice = _mVoiceResult.voices[index];
+            if (null != voice &&
+                voice.name == "Google US English")
+            {
+                _mSpeechSynthesisPlugin.SetVoice(_mSpeechSynthesisUtterance, voice);
+                break;
+            }
+        }
+    }
+
+    // Cancel if already speaking
+    _mSpeechSynthesisPlugin.Cancel();
+
+    // Set the text that will be spoken
+    _mSpeechSynthesisPlugin.SetText(_mSpeechSynthesisUtterance, text);
+
+    // Use the plugin to speak the utterance
+    _mSpeechSynthesisPlugin.Speak(_mSpeechSynthesisUtterance);
+}
+```
+
 # Scenes
 
 ## Example01 - Speech Synthesis
