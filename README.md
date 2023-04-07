@@ -21,9 +21,9 @@ The `WebGL Speech` package is available in the [Unity Asset Store](https://asset
 
 * Windows Unity Editor (using [Speech Proxy](https://github.com/tgraupmann/ConsoleChromeSpeechProxy))
 
-<div style="margin: 20px; padding: 20px; border: solid 1px white">
+<table border="1"><tr><td>
 Note: WebGL builds use the built-in browser to use the Speech API on PC/Mac/Android/iOS. In order to use the Speech API in standalone builds in the Unity Editor, you will need to configure and run the free <a target="_blank" href="https://github.com/tgraupmann/ConsoleChromeSpeechProxy">Speech Proxy</a>.
-</div>
+</td></tr></table>
 
 # Target
 
