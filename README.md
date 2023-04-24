@@ -74,7 +74,13 @@ Check the [browser compatibility](https://developer.mozilla.org/en-US/docs/Web/A
 
 1.8 - Updated sample scenes to use default 5000 port
 
-1.9 - Added support for 2018.X, 2019.X, and 2021.X.
+1.9 - Added support for `2018.1` and `2019.1`.
+
+1.10 - Added support for `2020.X`
+
+1.11 - Added support for `2021.X`
+
+1.12 - Added support for `iOS 16.3.1`
 
 # Demos
 
@@ -99,6 +105,12 @@ Note: In December of 2018, Chrome added a speech restriction that the speak() me
 
 <https://www.chromestatus.com/feature/5687444770914304>
 </td></tr></table>
+
+* The WebGLSpeechSynthesis plugin now adds a full page `div` named `divActivateSpeechAPI` that initializes the Speech API when clicked to work around the new browser security. An alternative div element named `divActivateSpeechAPI` can be added to the HTML5 page if you want to customize the visual look of this user interaction. ![image_13](images/image_13.png)
+
+* WebGL builds require iOS 15.5 or greater. Earlier versions will report a memory access violation.
+
+* Unity 2021.X or later introduced a build issue when plugins use Unicode. Use the latest Unity 2021.X package from the Unity Asset Store rather than upgrading from an earlier package.
 
 # Sample Scenes
 
