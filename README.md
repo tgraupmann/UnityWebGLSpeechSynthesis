@@ -518,4 +518,4 @@ Add the "WebGL Speech Synthesis"-prefab as "Custom Provider":
 
 Send questions and/or feedback to the support@theylovegames.com email.
 
-Support is also available in Discord, you can reach me at `Tim Graupmann#0611`.
+Support is also available in Discord, you can reach me at `tgraupmann`.
