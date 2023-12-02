@@ -508,7 +508,7 @@ The example source is located at `Assets/WebGLSpeechSynthesis/Scripts/Example07B
 
 Q: How do I integrate with RT_Voice?
 
-Within the RT-Voice package, there is a demo scene called "WebGL_Demo". RT-Voice provides a 3rd party package for your asset and a prefab "WebGL Speech Synthesis", which has to be added to the scene and the "RTVoice"-prefab.
+Within the [RT-Voice](https://assetstore.unity.com/packages/tools/audio/rt-voice-pro-41068) package, there is a demo scene called "WebGL_Demo". [RT-Voice](https://assetstore.unity.com/packages/tools/audio/rt-voice-pro-41068) provides a 3rd party package for your asset and a prefab "WebGL Speech Synthesis", which has to be added to the scene and the "RTVoice"-prefab.
 
 Add the "WebGL Speech Synthesis"-prefab as "Custom Provider":
 
